@@ -27,7 +27,6 @@ export default function News(props) {
     }
 
     useEffect(() => {
-        console.log("News.js - useEffect")
         updateNews()
     }, [])
 
