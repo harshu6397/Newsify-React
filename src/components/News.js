@@ -11,18 +11,18 @@ export default function News(props) {
     const [totalResults, setTotalResults] = useState(0);
 
     const updateNews = async () => {
-        props.updateProgress(10)
+        props.setProgress(10)
         const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pageSize=${props.pageSize}`
 
         let data = await fetch(url)
-        props.updateProgress(30)
+        props.setProgress(30)
         let parsedData = await data.json()
-        props.updateProgress(70)
+        props.setProgress(70)
         setArticles(parsedData.articles)
         setTotalResults(parsedData.totalResults)
         setLoading(false)
 
-        props.updateProgress(100)
+        props.setProgress(100)
         document.title = `Newsify - ${props.category[0].toUpperCase() + props.category.slice(1)}`
     }
 
@@ -33,9 +33,8 @@ export default function News(props) {
 
 
     const fetchMoreData = async () => {
-        setPage(page + 1)
         const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page + 1}&pageSize=${props.pageSize} `
-
+        setPage(page + 1)
         let data = await fetch(url)
         let parsedData = await data.json()
         setArticles(articles.concat(parsedData.articles))
