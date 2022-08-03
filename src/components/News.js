@@ -44,7 +44,7 @@ export default function News(props) {
 
     return (
         <>
-            <h1 style={{ textAlign: "center", margin: '5px' }}>Newsify -{props.category[0].toUpperCase() + props.category.slice(1)} Top Headlines</h1>
+            <h1 style={{ textAlign: "center", marginTop: '90px' }}>Newsify -{props.category[0].toUpperCase() + props.category.slice(1)} Top Headlines</h1>
             {loading && <Spinner />}
             <InfiniteScroll
                 dataLength={articles.length}
